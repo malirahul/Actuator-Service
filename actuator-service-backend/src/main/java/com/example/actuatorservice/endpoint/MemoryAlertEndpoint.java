@@ -27,7 +27,7 @@ import jakarta.mail.internet.*;
 import java.util.Properties;
 
 @Component
-@Endpoint(id = "memory-alert")
+@Endpoint(id = "memoryAlert")
 public class MemoryAlertEndpoint {
 
     private static final Logger logger = LoggerFactory.getLogger(MemoryAlertEndpoint.class);
