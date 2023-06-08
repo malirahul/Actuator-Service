@@ -254,47 +254,57 @@ export default function Dashboard() {
                     <b>Http Response</b>
                   </span>
                 </h4>
-                <HorizontalGrid gap="4" columns={2}>
-                  <div style={{ marginTop: "20px" }}>
-                    <BarChart width={500} height={300} data={requestData}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="name" />
-                      <YAxis nameKey="value" />
-                      <Tooltip />
-                      <Legend />
-                      <Bar dataKey="count" fill="#8884d8" label>
-                        {requestData.map((entry, index) => (
-                          <Cell
-                            key={`cell-${index}`}
-                            fill={COLORS[index % COLORS.length]}
-                          />
-                        ))}
-                      </Bar>
-                    </BarChart>
-                  </div>
-                  <div style={{ marginTop: "20px" }}>
-                    <PieChart width={500} height={300}>
-                      <Pie
-                        data={statusData}
-                        dataKey="value"
-                        nameKey="name"
-                        cx="50%"
-                        cy="50%"
-                        outerRadius={80}
-                        fill="#8884d8"
-                        label
-                      >
-                        {statusData.map((entry, index) => (
-                          <Cell
-                            key={`cell-${index}`}
-                            fill={COLORS[index % COLORS.length]}
-                          />
-                        ))}
-                      </Pie>
-                      <Legend />
-                    </PieChart>
-                  </div>
-                </HorizontalGrid>
+                <Grid>
+                  <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
+                    <LegacyCard title="Sales" sectioned>
+                      <div style={{ marginTop: "20px" }}>
+                        <BarChart width={400} height={300} data={requestData}>
+                          <CartesianGrid strokeDasharray="4 4" />
+                          <XAxis dataKey="name" />
+                          <YAxis nameKey="value" />
+                          <Tooltip />
+                          <Legend />
+                          <Bar dataKey="count" fill="#8884d8" label>
+                            {requestData.map((entry, index) => (
+                              <Cell
+                                key={`cell-${index}`}
+                                fill={COLORS[index % COLORS.length]}
+                              />
+                            ))}
+                          </Bar>
+                        </BarChart>
+                      </div>
+                    </LegacyCard>
+                  </Grid.Cell>
+                  <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
+                    <LegacyCard title="Orders" sectioned>
+                      <div style={{ marginTop: "20px" }}>
+                        <PieChart width={400} height={300}>
+                          <Tooltip />
+                          <Legend />
+                          <Pie
+                            data={statusData}
+                            dataKey="value"
+                            nameKey="name"
+                            cx="50%"
+                            cy="50%"
+                            outerRadius={80}
+                            fill="#8884d8"
+                            label
+                          >
+                            {statusData.map((entry, index) => (
+                              <Cell
+                                key={`cell-${index}`}
+                                fill={COLORS[index % COLORS.length]}
+                              />
+                            ))}
+                          </Pie>
+                          <Legend />
+                        </PieChart>
+                      </div>
+                    </LegacyCard>
+                  </Grid.Cell>
+                </Grid>
               </div>
             </div>
           </Card>
